@@ -189,6 +189,26 @@ void findCommand (char * command[], int amountOfWords) {
     
   }
 
+    else if (strcmp(command[0], "<") == 0 && amountOfWords > 1) {
+
+      FILE * filePointer;
+      char * userCommand = (char *)malloc(sizeof(char)*STRING_LENGTH);
+      char ** tokenizedString[STRING_LENGTH];
+  *(tokenizedString) = (char **) malloc (sizeof(char *) * STRING_LENGTH);
+
+      filePointer = fopen(command[1], "r");
+      
+      while (fgets(userCommand, STRING_LENGTH, filePointer) != NULL) {
+        int amountOfWords = tokenizeString(userCommand, DELIMINATORS, tokenizedString);
+    findCommand(*tokenizedString, amountOfWords);
+      }
+
+      if (filePointer == NULL) {
+        errorChecker();
+      }
+      
+    }
+
   else {
     
     printf("myshell: unknown command: %s\n", command[0]);
