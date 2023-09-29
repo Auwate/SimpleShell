@@ -38,3 +38,8 @@ Commands:
 **wait**
   Waits for any process to finish
   Example: wait -- Waits until any process has finished. If there are no processes, myshell will notify the user.
+
+Makefile
+
+**make**
+  Runs the makefile
